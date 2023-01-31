@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonLabels:
+  app: apheleia-operator
+resources:
+  - deployment.yaml
+  - sa.yaml
+  - rbac.yaml
+  - deploy-task.yaml
+  - https://github.com/apheleia-project/apheleia/deployment/crds/apheleia.io_componentbuilds.yaml?ref=3aaba8f2768b5df8fe19b382be3b42ae5f5d8a97
+
+images:
+  - name: apheleia-operator
+    newName: quay.io/sdouglas/apheleia-operator
+    newTag: 3aaba8f2768b5df8fe19b382be3b42ae5f5d8a97
+  - name: apheleia-analyser
+    newName: quay.io/sdouglas/apheleia-analyser
+    newTag: 3aaba8f2768b5df8fe19b382be3b42ae5f5d8a97
