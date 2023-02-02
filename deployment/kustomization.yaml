@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - https://github.com/apheleia-project/apheleia/deploy/tekton/base?ref=4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
+  - https://github.com/apheleia-project/apheleia/deploy/build-operator/base?ref=4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
+  - https://github.com/apheleia-project/apheleia/deploy/crds/base?ref=4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
+  - https://github.com/apheleia-project/apheleia/deploy/apheleia-operator/base?ref=4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
+
+images:
+  - name: apheleia-operator
+    newName: quay.io/mk-ci-cd/apheleia-controller
+    newTag: 4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
+  - name: apheleia-analyser
+    newName: quay.io/mk-ci-cd/apheleia-analyser
+    newTag: 4cbee3efcdc040a8f66e1c50d9ef1d18d05af0f2
